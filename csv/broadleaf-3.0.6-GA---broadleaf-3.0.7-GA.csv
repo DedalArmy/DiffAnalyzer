@@ -1,0 +1,3 @@
+old;new;obj;subst
+broadleaf-3.0.6-GA;broadleaf-3.0.7-GA;class dedal.impl.CompInstanceImpl "blAdminTranslationControllerExtensionListeners";null
+broadleaf-3.0.6-GA;broadleaf-3.0.7-GA;class dedal.impl.AssemblyImpl Assembly;true
