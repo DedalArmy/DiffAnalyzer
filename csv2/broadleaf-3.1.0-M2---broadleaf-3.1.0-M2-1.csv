@@ -1,0 +1,6 @@
+old;new;obj;diff_kind;subst
+broadleaf-3.1.0-M2;broadleaf-3.1.0-M2-1;class dedal.impl.SignatureImpl getForceShowIdColumns;DELETE;false
+broadleaf-3.1.0-M2;broadleaf-3.1.0-M2-1;class dedal.impl.InterfaceTypeImpl IPropertiesVariableExpression;null;false
+broadleaf-3.1.0-M2;broadleaf-3.1.0-M2-1;class dedal.impl.InterfaceImpl org_broadleafcommerce_common_web_expression_PropertiesVariableExpression_provIPropertiesVariableExpression;null;false
+broadleaf-3.1.0-M2;broadleaf-3.1.0-M2-1;class dedal.impl.CompClassImpl "org.broadleafcommerce.common.web.expression.PropertiesVariableExpression";null;false
+broadleaf-3.1.0-M2;broadleaf-3.1.0-M2-1;class dedal.impl.ConfigurationImpl Configuration;null;false
