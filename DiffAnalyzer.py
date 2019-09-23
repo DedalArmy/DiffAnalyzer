@@ -237,6 +237,8 @@ class DiffAnalyzer:
 
     def isSubjectToDrift(self):
         if ((self.actualIncrement()==Increment.BUILD and self.proposeIncrement()==Increment.MINOR) or \
+                (self.actualIncrement()==Increment.BUILD and self.proposeIncrement()==Increment.MAJOR and \
+                 len(self.df_diffs[(self.df_diffs[self.kind] == 'DELETE')])==0) or \
                 (self.actualIncrement()==Increment.MINOR and self.proposeIncrement()==Increment.MAJOR and \
                  len(self.df_diffs[(self.df_diffs[self.kind] == 'DELETE')])==0)):
             return True

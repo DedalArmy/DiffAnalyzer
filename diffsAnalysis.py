@@ -2,6 +2,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from os import listdir
 from DiffAnalyzer import DiffAnalyzer, export_result, Increment
+# import git_graph.dot_graph as dg
+# dg.DotGraph('/home/aleborgne/git/BroadLeafCommerce/BroadleafCommerce').persist()
+# dg.DotGraph('/home/aleborgne/git/BroadLeafCommerce/BroadleafCommerce', nodes='g').persist(form='svg', conceal=True)
 
 if __name__ == '__main__':
     path = './csv2/'
@@ -40,7 +43,7 @@ if __name__ == '__main__':
     explode = (0.1, 0.1, 0.1)
 
     plt.figure(0)
-    plt.pie(sizes, explode=explode, colors=colors,
+    plt.pie(sizes, explode=explode, colors=colors, labels=sizes,
             autopct='%1.2f%%', shadow=False, startangle=90, labeldistance=1)
     plt.title('')
     plt.legend( labels=labels, loc=3)
@@ -61,6 +64,8 @@ if __name__ == '__main__':
     nb_major_for_minor_increment = len(major_for_minor_increment)
     minor_for_major_increment = df[(df['actualIncrement'] == Increment.MINOR) & (df['proposedIncrement'] == Increment.MAJOR)]
     nb_minor_for_major_increment = len(minor_for_major_increment)
+
+
 
     labels = []
     sizes = []
@@ -99,7 +104,7 @@ if __name__ == '__main__':
         explode.append(0.1)
 
     plt.figure(1)
-    plt.pie(sizes, explode=explode, colors=colors,
+    plt.pie(sizes, explode=explode, colors=colors, labels=sizes,
             autopct='%1.2f%%', shadow=False, startangle=90, labeldistance=1)
     plt.title('')
     plt.legend( labels=labels, loc=3)
@@ -110,13 +115,19 @@ if __name__ == '__main__':
 
     erosion_only = df[(df['isSubjectToErosion'] == True) & (df['isSubjectToDrift'] == False)]
     nb_erosion_only = len(erosion_only)
+    build_for_major_increment = erosion_only[(erosion_only['actualIncrement'] == Increment.BUILD) & (erosion_only['proposedIncrement'] == Increment.MAJOR)]
+    nb_build_for_major_increment = len(build_for_major_increment)
     drift_only = df[(df['isSubjectToDrift'] == True) & (df['isSubjectToErosion'] == False)]
     nb_drift_only = len(drift_only)
     erosion_and_drift = df[(df['isSubjectToErosion'] == True) & (df['isSubjectToDrift'] == True)]
     nb_erosion_and_drift = len(erosion_and_drift)
     no_erosion_nor_drift = df[(df['isSubjectToErosion'] == False) & (df['isSubjectToDrift'] == False)]
     nb_no_erosion_nor_drift = len(no_erosion_nor_drift)
-    # print(erosion_only)
+    print(erosion_only)
+    print(build_for_major_increment)
+    print(drift_only[(drift_only['actualIncrement'] == Increment.BUILD) & (drift_only['proposedIncrement'] == Increment.MINOR)])
+    print(drift_only[(drift_only['actualIncrement'] == Increment.BUILD) & (drift_only['proposedIncrement'] == Increment.MAJOR)])
+    print(drift_only[(drift_only['actualIncrement'] == Increment.MINOR) & (drift_only['proposedIncrement'] == Increment.MAJOR)])
     # print(drift_only)
     # print(erosion_and_drift)
     # print(no_erosion_nor_drift)
@@ -133,7 +144,7 @@ if __name__ == '__main__':
         explode.append(0.1)
 
     plt.figure(2)
-    plt.pie(sizes, explode=explode, colors=colors,
+    plt.pie(sizes, explode=explode, colors=colors, labels=sizes,
             autopct='%1.2f%%', shadow=False, startangle=90, labeldistance=1)
     plt.title('')
     plt.legend( labels=labels, loc=3)
